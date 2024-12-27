@@ -14,18 +14,17 @@ const getMockingUsers = async (req, res) => {
 
 const generateData = async (req, res) => {
     try {
-        // Obtener parámetros desde la solicitud
         const { users, pets } = req.body;
 
-        // Generar y guardar usuarios y mascotas en la base de datos
+
         const generatedUsers = await MockingService.generateMockingUsers(users);
         const generatedPets = await MockingService.generateMockingPets(pets);
 
-        // Validar los registros creados
-        const allUsers = await User.find(); // Consultar todos los usuarios en la base de datos
-        const allPets = await Pet.find(); // Consultar todas las mascotas en la base de datos
 
-        // Enviar respuesta con datos generados y validados
+        const allUsers = await User.find()
+        const allPets = await Pet.find()
+
+
         res.send({
             status: "success",
             message: "Datos generados exitosamente.",
